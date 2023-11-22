@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Project3.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Project3.MainWindow"
+        Title="Project3"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        IsHitTestVisible="True"
+        CanResize="False"
+        Width="800"
+        Height="450">
+        <Grid>
+                <TabControl >
+                        <TabItem Header="Risk" x:DataType="viewModels:RiskViewModel" Foreground="Red">
+                                <Grid>
+                                         <DataGrid x:Name="RiskGrid" Background="Black" AutoGenerateColumns="True" Foreground="Red"  ItemsSource="{Binding Risks }"></DataGrid>
+                                </Grid>
+                        </TabItem>
+                        <TabItem Header="Strategy" x:DataType="viewModels:StrategyViewModel" Foreground="Red">
+                                <Grid>
+                                        <DataGrid x:Name="StrategyGrid" Background="Black" AutoGenerateColumns="True" Foreground="Red"  ItemsSource="{Binding Strategies }"></DataGrid>
+                                </Grid>
+                        </TabItem>
+                        <TabItem Header="Impact" x:DataType="viewModels:ImpactViewModel" Foreground="Red">
+                                <Grid>
+                                        <DataGrid x:Name="ImpactGrid" Background="Black" AutoGenerateColumns="True" Foreground="Red" ItemsSource="{Binding Impacts}"></DataGrid>
+                                </Grid>
+                        </TabItem>
+                        <TabItem Header="RiskCategory" x:DataType="viewModels:RiskCategoryViewModel" Foreground="Red">
+                                <DataGrid x:Name="RiskCategoryGrid" Background="Black" AutoGenerateColumns="True" Foreground="Red" ItemsSource="{Binding RiskCategories}"></DataGrid>
+                        </TabItem>
+                        <TabItem Header="Company" x:DataType="viewModels:CompanyViewModel" Foreground="Red">
+                                <DataGrid x:Name="CompanyGrid" Background="Black" AutoGenerateColumns="True" Foreground="Red" ItemsSource="{Binding Companies}"></DataGrid>
+ 
+                        </TabItem>
+                </TabControl>
+        </Grid>
+</Window>
