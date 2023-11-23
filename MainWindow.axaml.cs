@@ -16,4 +16,9 @@ public partial class MainWindow : Window
         DataContext = new RiskCategoryViewModel();
         DataContext = new ImpactViewModel();
     }
+
+    private void CloseButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+       this.Close();
+    }
 }
