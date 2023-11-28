@@ -3,7 +3,9 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="AddRiskWindow.axaml" value="Project3.csproj" />
         <entry key="App.axaml" value="Project3.csproj" />
+        <entry key="EditWindow.axaml" value="Project3.csproj" />
         <entry key="MainWindow.axaml" value="Project3.csproj" />
         <entry key="RiskWindow.axaml" value="Project3.csproj" />
         <entry key="ViewModels/RiskWindow.axaml" value="Project3.csproj" />

@@ -16,6 +16,5 @@ public class ImpactViewModel : ViewModelBase
     public ImpactViewModel()
     {
         Impacts = new ObservableCollection<Impact>();
-        Impacts.Add(new Impact(1,1,"asdas"));
     }
 }

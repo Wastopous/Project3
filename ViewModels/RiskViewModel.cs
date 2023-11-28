@@ -16,6 +16,5 @@ public class RiskViewModel : ViewModelBase
     public RiskViewModel()
     {
         Risks = new ObservableCollection<Risk>();
-        Risks.Add(new Risk(1,"asd"));
     }
 }

@@ -16,6 +16,5 @@ public class StrategyViewModel : ViewModelBase
     public StrategyViewModel()
     {
         Strategies = new ObservableCollection<Strategy>();
-        Strategies.Add(new Strategy(1,"aaa", "asd"));
     }
 }

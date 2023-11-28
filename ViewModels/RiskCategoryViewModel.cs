@@ -16,6 +16,5 @@ public class RiskCategoryViewModel : ViewModelBase
     public RiskCategoryViewModel()
     {
         RiskCategories = new ObservableCollection<RiskCategory>();
-        RiskCategories.Add(new RiskCategory(1,"aaaaa","fds"));
     }
 }
