@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Linq;
 using Avalonia.Collections;
 using Microsoft.EntityFrameworkCore;
 using Project3.Models;
@@ -33,12 +32,11 @@ public class RiskViewModel : ViewModelBase
                 .Include(x => x.RiskCategory)
                 .Include(x => x.RiskMitigation)
                 .Include(x=> x.ThreatPrevention)
-                .ToList(); 
+               .ToList(); 
             foreach (var risk in risks)
             {
                 Risks.Add(risk);
             }
         }
-
     }
 }
