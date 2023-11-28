@@ -1,13 +1,15 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+using Avalonia.Collections;
 using Project3.Models;
 
 namespace Project3.ViewModels;
 
 public class RiskCategoryViewModel : ViewModelBase
 {
-    private ObservableCollection<RiskCategory> _riskCategories;
+    private AvaloniaList<RiskCategory> _riskCategories;
 
-    public ObservableCollection<RiskCategory> RiskCategories
+    public AvaloniaList<RiskCategory> RiskCategories
     {
         get => _riskCategories;
         set => SetField(ref _riskCategories, value);
@@ -15,6 +17,19 @@ public class RiskCategoryViewModel : ViewModelBase
 
     public RiskCategoryViewModel()
     {
-        RiskCategories = new ObservableCollection<RiskCategory>();
+        RiskCategories = new AvaloniaList<RiskCategory>();
+        LoadRiskCategories();
+    }
+
+    private void LoadRiskCategories()
+    {
+        using (var dbContext = new YourDbContext())
+        {
+            var riskCategories = dbContext.RiskMitigation.ToList();
+            foreach (var riskCategory in riskCategories)
+            {
+                riskCategories.Add(riskCategory);
+            }
+        }
     }
 }

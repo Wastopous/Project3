@@ -1,14 +1,15 @@
-﻿namespace Project3.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Project3.Models;
 
 public class Risk
 {
-    public int RiskID { get; set; }
+    [Key]public int RiskID { get; set; }
+    public Impact Impact { get; set; }
+    public Company Company { get; set; }
     public string RiskDescription { get; set; }
-
-    public Risk(int riskId, string riskDescription)
-    {
-        this.RiskID = riskId;
-        this.RiskDescription = riskDescription;
-
-    }
+    public Strategy Strategy { get; set; }
+    public RiskCategory RiskCategory { get; set; }
+    public RiskMitigation RiskMitigation { get; set; }
+    public ThreatPrevention ThreatPrevention { get; set; }
 }

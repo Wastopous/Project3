@@ -21,4 +21,19 @@ public partial class MainWindow : Window
     {
        this.Close();
     }
+
+    private void EditButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        
+    }
+
+    private void AddButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void DeleteButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        
+    }
 }
