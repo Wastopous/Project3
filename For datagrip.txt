@@ -1,0 +1,97 @@
+﻿create table company
+(
+    CompanyID          int auto_increment
+        primary key,
+    CompanyName        longtext not null,
+    CompanyDescription longtext not null
+);
+
+create table impact
+(
+    ImpactID          int auto_increment
+        primary key,
+    ImpactAmount      int      not null,
+    ImpactDescription longtext not null
+);
+
+create table riskcategory
+(
+    RiskCategoryID          int auto_increment
+        primary key,
+    RiskCategoryName        longtext not null,
+    RiskCategoryDescription longtext not null
+);
+
+create table riskmitigation
+(
+    RislMitigationID          int auto_increment
+        primary key,
+    RiskMitigationName        longtext not null,
+    RiskMitigationDescription longtext not null
+);
+
+create table strategy
+(
+    StrategyID          int auto_increment
+        primary key,
+    StrategyName        longtext not null,
+    StrategyDescription longtext not null
+);
+
+create table threatprevention
+(
+    ThreatPreventionID          int auto_increment
+        primary key,
+    ThreatPreventionName        longtext not null,
+    ThreatPreventionDescription longtext not null
+);
+
+create table risk
+(
+    RiskID                         int auto_increment
+        primary key,
+    ImpactID                       int      not null,
+    CompanyID                      int      not null,
+    RiskDescription                longtext not null,
+    StrategyID                     int      not null,
+    RiskCategoryID                 int      not null,
+    RiskMitigationRislMitigationID int      not null,
+    ThreatPreventionID             int      not null,
+    constraint FK_Risk_Company_CompanyID
+        foreign key (CompanyID) references company (CompanyID)
+            on delete cascade,
+    constraint FK_Risk_Impact_ImpactID
+        foreign key (ImpactID) references impact (ImpactID)
+            on delete cascade,
+    constraint FK_Risk_RiskCategory_RiskCategoryID
+        foreign key (RiskCategoryID) references riskcategory (RiskCategoryID)
+            on delete cascade,
+    constraint FK_Risk_RiskMitigation_RiskMitigationRislMitigationID
+        foreign key (RiskMitigationRislMitigationID) references riskmitigation (RislMitigationID)
+            on delete cascade,
+    constraint FK_Risk_Strategy_StrategyID
+        foreign key (StrategyID) references strategy (StrategyID)
+            on delete cascade,
+    constraint FK_Risk_ThreatPrevention_ThreatPreventionID
+        foreign key (ThreatPreventionID) references threatprevention (ThreatPreventionID)
+            on delete cascade
+);
+
+create index IX_Risk_CompanyID
+    on risk (CompanyID);
+
+create index IX_Risk_ImpactID
+    on risk (ImpactID);
+
+create index IX_Risk_RiskCategoryID
+    on risk (RiskCategoryID);
+
+create index IX_Risk_RiskMitigationRislMitigationID
+    on risk (RiskMitigationRislMitigationID);
+
+create index IX_Risk_StrategyID
+    on risk (StrategyID);
+
+create index IX_Risk_ThreatPreventionID
+    on risk (ThreatPreventionID);
+
