@@ -4,7 +4,7 @@
         xmlns:dialogHost="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Project3.ViewModels"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="905" d:DesignHeight="450"
         x:Class="Project3.MainWindow"
         Title="Project3"
         ExtendClientAreaToDecorationsHint="True"
@@ -12,49 +12,65 @@
         ExtendClientAreaTitleBarHeightHint="-1"
         IsHitTestVisible="True"
         CanResize="False"
-        Width="800"
+        Width="905"
         Height="450">
-        <dialogHost:DialogHost>
-                        <dialogHost:DialogHost.DialogContent>
-                                <Grid>
-                                        
-                                </Grid>
-                        </dialogHost:DialogHost.DialogContent>
                 <TabControl x:Name="RiskControl"  FontFamily="Times New Roman" FontSize="16" FontStretch="Condensed">
                         <TabItem Header="Risk" x:DataType="viewModels:RiskViewModel" Foreground="#526257">
                                 <Grid>
-                                        <DataGrid x:Name="RiskGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen"  ItemsSource="{Binding Risks }"></DataGrid>
-                                                <Button x:Name="CloseButton" Content="x" Margin="758 -450 0 20" Height="27" Width="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#526257" Click="CloseButton_OnClick"> </Button>
-                                                <TextBox x:Name="SearchTextBox" Margin="-300 360 0 0" Width="500" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
-                                                <Button x:Name="EditButton" Content="Edit" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditButton_OnClick"></Button>
-                                                <Button x:Name="AddButton" Content="Add" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="590 360 0 0" Click="AddButton_OnClick"></Button>
-                                                <Button x:Name="DeleteButton" Content="Delete" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteButton_OnClick"></Button>
+                                        <DataGrid x:Name="RiskGrid" Background="Black" AutoGenerateColumns="False" Foreground="DarkSeaGreen"  ItemsSource="{Binding Risks }">
+                                                        <DataGrid.Columns>
+                                                                <DataGridTextColumn Header="RiskID" Binding="{Binding RiskID}" />
+                                                                <DataGridTextColumn Header="Impact" Binding="{Binding Impact.ImpactAmount}" />
+                                                                <DataGridTextColumn Header="Company" Binding="{Binding Company.CompanyName}" />
+                                                                <DataGridTextColumn Header="RiskDescription" Binding="{Binding RiskDescription}" />
+                                                                <DataGridTextColumn Header="Strategy" Binding="{Binding Strategy.StrategyName}" />
+                                                                <DataGridTextColumn Header="RiskCategory" Binding="{Binding RiskCategory.RiskCategoryName}" />
+                                                                <DataGridTextColumn Header="RiskMitigation" Binding="{Binding RiskMitigation.RiskMitigationName}" />
+                                                                <DataGridTextColumn Header="ThreatPrevention" Binding="{Binding ThreatPrevention.ThreatPreventionName}" />
+                                                        </DataGrid.Columns>
+                                        </DataGrid>
+                                                <TextBox x:Name="SearchRiskTextBox" Margin="-400 360 0 0" Width="500" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" TextChanging="SearchRiskTextBox_OnTextChanging" ></TextBox>
+                                                <Button x:Name="EditRiskButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditRiskButton_OnClickButton_OnClick"></Button>
+                                                <Button x:Name="DeleteRiskButton" Content="Delete" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteRiskButton_OnClick"></Button>
                                 </Grid>
                         </TabItem>
                         <TabItem Header="Strategy" x:DataType="viewModels:StrategyViewModel" Foreground="#526257">
                                 <Grid>
                                       <DataGrid x:Name="StrategyGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen"  ItemsSource="{Binding Strategies }"></DataGrid>
-                                                <Button x:Name="CloseButton2" Content="x" Margin="758 -450 0 20" Height="27" Width="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#526257" Click="CloseButton_OnClick"> </Button>
+                                                <TextBox x:Name="SearchStrategyTextBox" Margin="-400 360 0 0" Width="500" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                                <Button x:Name="EditStrategyButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditStrategyButton_OnClick"></Button>
+                                                <Button x:Name="DeleteStrategyButton" Content="Delete" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteStrategyButton_OnClick"></Button>  
                                 </Grid>
                         </TabItem>
                         <TabItem Header="Impact" x:DataType="viewModels:ImpactViewModel" Foreground="#526257">
                                 <Grid>
                                         <DataGrid x:Name="ImpactGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding Impacts}"></DataGrid>
-                                                <Button x:Name="CloseButton3" Content="x" Margin="758 -450 0 20" Height="27" Width="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#526257" Click="CloseButton_OnClick"> </Button>
                                 </Grid>
                         </TabItem>
                         <TabItem Header="RiskCategory" x:DataType="viewModels:RiskCategoryViewModel" Foreground="#526257">
                                 <Grid>
                                 <DataGrid x:Name="RiskCategoryGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding RiskCategories}"></DataGrid>
-                                        <Button x:Name="CloseButton4" Content="x" Margin="758 -450 0 20" Height="27" Width="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#526257" Click="CloseButton_OnClick"> </Button>
+
                                 </Grid>
                         </TabItem>
                         <TabItem Header="Company" x:DataType="viewModels:CompanyViewModel" Foreground="#526257" >
                                 <Grid>
                                 <DataGrid x:Name="CompanyGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding Companies}"></DataGrid>
-                                        <Button x:Name="CloseButton5" Content="x" Margin="758 -450 0 20" Height="27" Width="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#526257" Click="CloseButton_OnClick"> </Button>
+                                        <TextBox x:Name="SearchCompanyTextBox" Margin="-400 360 0 0" Width="500" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                        <Button x:Name="EditCompanyButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditCompanyButton_OnClick"></Button>
+                                        <Button x:Name="DeleteCompanyButton" Content="Delete" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteStrategyButton_OnClick"></Button>
+
+                                </Grid>
+                        </TabItem>
+                        <TabItem Header="RiskMitigation" x:DataType="viewModels:RiskMitigationViewModel" Foreground="#526257" >
+                                <Grid>
+                                        <DataGrid x:Name="RiskMitigationGrid"  Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding RiskMitigations}"></DataGrid>
+                                </Grid>
+                        </TabItem>
+                        <TabItem Header="ThreatPrevention" x:DataType="viewModels:ThreatPreventionViewModel" Foreground="#526257" >
+                                <Grid>
+                                        <DataGrid x:Name="ThreatPreventionGrid"  Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding ThreatPreventions}"></DataGrid>
                                 </Grid>
                         </TabItem>
                 </TabControl>
-        </dialogHost:DialogHost>
 </Window>

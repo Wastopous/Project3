@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Avalonia.Remote.Protocol.Input;
+using Microsoft.EntityFrameworkCore;
 
 namespace Project3.Models;
 

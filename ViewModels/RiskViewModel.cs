@@ -26,12 +26,12 @@ public class RiskViewModel : ViewModelBase
         using (var dbContext = new YourDbContext()) 
         {
             var risks = dbContext.Risk
-                .Include(x => x.Impact)
-                .Include(x => x.Company)
-                .Include(x =>x.Strategy)
-                .Include(x => x.RiskCategory)
-                .Include(x => x.RiskMitigation)
-                .Include(x=> x.ThreatPrevention)
+                .Include(i => i.Impact)
+                .Include(c => c.Company)
+                .Include(s =>s.Strategy)
+                .Include(rc => rc.RiskCategory)
+                .Include(rm => rm.RiskMitigation)
+                .Include(t=> t.ThreatPrevention)
                .ToList(); 
             foreach (var risk in risks)
             {

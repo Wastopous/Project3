@@ -25,11 +25,8 @@ public class RiskCategoryViewModel : ViewModelBase
     {
         using (var dbContext = new YourDbContext())
         {
-            var riskCategories = dbContext.RiskMitigation.ToList();
-            foreach (var riskCategory in riskCategories)
-            {
-                riskCategories.Add(riskCategory);
-            }
+            var riskCategories = dbContext.RiskCategory.ToList();
+            RiskCategories = new(riskCategories);
         }
     }
 }
