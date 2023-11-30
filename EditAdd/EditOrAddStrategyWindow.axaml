@@ -1,0 +1,33 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:Project3.Models"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+        x:Class="Project3.EditAddDelete.EditOrAddStrategyWindow"
+        Title="EditOrAddStrategyWindow"
+        x:DataType="models:Strategy"
+        Height="300"
+        Width="400"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        IsHitTestVisible="True"
+        CanResize="False">
+        <StackPanel>
+                <TextBox
+                        x:Name = "NewName"
+                        Text = "{Binding StrategyName }"
+                        Watermark="New Name">
+                </TextBox>
+                <TextBox
+                        x:Name = "NewDescription"
+                        Text = "{Binding StrategyDescription}"
+                        Watermark="New Description">
+                </TextBox>
+                <Panel Name="Menu" Width="400" Height="230" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                        <Button Content ="Save" Name="SaveBtn" Background="#526257" VerticalAlignment="Bottom" Margin="0 20 0 0" Width="200" Foreground="Black" HorizontalContentAlignment="Center" Click="SaveBtn_OnClick"></Button>
+                        <Button Content ="Cancel" Name="CancelBtn" Background="#526257" VerticalAlignment="Bottom" Margin=" 200 20 0 0" Width="200" Foreground="Black" HorizontalContentAlignment="Center" Click="CancelBtn_OnClick"></Button>
+                </Panel>
+        </StackPanel>
+</Window>

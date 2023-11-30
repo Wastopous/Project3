@@ -1,10 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:dialogHost="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Project3.ViewModels"
-        mc:Ignorable="d" d:DesignWidth="905" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="911" d:DesignHeight="450"
         x:Class="Project3.MainWindow"
         Title="Project3"
         ExtendClientAreaToDecorationsHint="True"
@@ -12,11 +11,12 @@
         ExtendClientAreaTitleBarHeightHint="-1"
         IsHitTestVisible="True"
         CanResize="False"
-        Width="905"
-        Height="450">
+        Width="911"
+        Height="450"
+        x:DataType="viewModels:MainWindowViewModel">
                 <TabControl x:Name="RiskControl"  FontFamily="Times New Roman" FontSize="16" FontStretch="Condensed">
-                        <TabItem Header="Risk" x:DataType="viewModels:RiskViewModel" Foreground="#526257">
-                                <Grid>
+                        <TabItem Header="Risk"   Foreground="#526257">
+                                <Grid DataContext = "{Binding RiskViewModel}">
                                         <DataGrid x:Name="RiskGrid" Background="Black" AutoGenerateColumns="False" Foreground="DarkSeaGreen"  ItemsSource="{Binding Risks }">
                                                         <DataGrid.Columns>
                                                                 <DataGridTextColumn Header="RiskID" Binding="{Binding RiskID}" />
@@ -29,47 +29,60 @@
                                                                 <DataGridTextColumn Header="ThreatPrevention" Binding="{Binding ThreatPrevention.ThreatPreventionName}" />
                                                         </DataGrid.Columns>
                                         </DataGrid>
-                                                <TextBox x:Name="SearchRiskTextBox" Margin="-400 360 0 0" Width="500" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" TextChanging="SearchRiskTextBox_OnTextChanging" ></TextBox>
+                                                <TextBox x:Name="SearchRiskTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" Text="{Binding Search}" ></TextBox>
                                                 <Button x:Name="EditRiskButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditRiskButton_OnClickButton_OnClick"></Button>
-                                                <Button x:Name="DeleteRiskButton" Content="Delete" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteRiskButton_OnClick"></Button>
+                                                <Button x:Name="DeleteRiskButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteRiskButton_OnClick"></Button>
                                 </Grid>
                         </TabItem>
-                        <TabItem Header="Strategy" x:DataType="viewModels:StrategyViewModel" Foreground="#526257">
+                        <TabItem Header="Strategy" DataContext = "{Binding StrategyViewModel}" Foreground="#526257">
                                 <Grid>
                                       <DataGrid x:Name="StrategyGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen"  ItemsSource="{Binding Strategies }"></DataGrid>
-                                                <TextBox x:Name="SearchStrategyTextBox" Margin="-400 360 0 0" Width="500" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                                <TextBox x:Name="SearchStrategyTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
                                                 <Button x:Name="EditStrategyButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditStrategyButton_OnClick"></Button>
-                                                <Button x:Name="DeleteStrategyButton" Content="Delete" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteStrategyButton_OnClick"></Button>  
+                                                <Button x:Name="DeleteStrategyButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteStrategyButton_OnClick"></Button>  
                                 </Grid>
                         </TabItem>
-                        <TabItem Header="Impact" x:DataType="viewModels:ImpactViewModel" Foreground="#526257">
+                        <TabItem Header="Impact " DataContext = "{Binding ImpactViewModel}" Foreground="#526257">
                                 <Grid>
                                         <DataGrid x:Name="ImpactGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding Impacts}"></DataGrid>
+                                        <TextBox x:Name="SearchImpactTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                        <Button x:Name="EditImpactButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" ></Button>
+                                        <Button x:Name="DeleteImpactButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" ></Button>
                                 </Grid>
                         </TabItem>
-                        <TabItem Header="RiskCategory" x:DataType="viewModels:RiskCategoryViewModel" Foreground="#526257">
+                        <TabItem Header="Company" DataContext = "{Binding CompanyViewModel}" Foreground="#526257" >
+                                <Grid>
+                                        <DataGrid x:Name="CompanyGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding Companies}"></DataGrid>
+                                        <TextBox x:Name="SearchCompanyTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                        <Button x:Name="EditCompanyButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditCompanyButton_OnClick"></Button>
+                                        <Button x:Name="DeleteCompanyButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteStrategyButton_OnClick"></Button>
+                                </Grid>
+                        </TabItem>
+                        <TabItem Header="RiskCategory" DataContext = "{Binding RiskCategoryViewModel}" Foreground="#526257">
                                 <Grid>
                                 <DataGrid x:Name="RiskCategoryGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding RiskCategories}"></DataGrid>
-
+                                        <TextBox x:Name="SearchRiskCategoryTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                        <Button x:Name="EditRiskCategoryButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" ></Button>
+                                        <Button x:Name="DeleteRiskCategoryButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" ></Button>
                                 </Grid>
                         </TabItem>
-                        <TabItem Header="Company" x:DataType="viewModels:CompanyViewModel" Foreground="#526257" >
-                                <Grid>
-                                <DataGrid x:Name="CompanyGrid" Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding Companies}"></DataGrid>
-                                        <TextBox x:Name="SearchCompanyTextBox" Margin="-400 360 0 0" Width="500" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
-                                        <Button x:Name="EditCompanyButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditCompanyButton_OnClick"></Button>
-                                        <Button x:Name="DeleteCompanyButton" Content="Delete" Background="#526257" Foreground="Black" Width="100" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteStrategyButton_OnClick"></Button>
-
-                                </Grid>
-                        </TabItem>
-                        <TabItem Header="RiskMitigation" x:DataType="viewModels:RiskMitigationViewModel" Foreground="#526257" >
+                        <TabItem Header="RiskMitigation" DataContext = "{Binding RiskMitigationViewModel}" Foreground="#526257" >
                                 <Grid>
                                         <DataGrid x:Name="RiskMitigationGrid"  Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding RiskMitigations}"></DataGrid>
+                                        <TextBox x:Name="SearchRiskMitigationTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                        <Button x:Name="EditRiskMitigationButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" ></Button>
+                                        <Button x:Name="DeleteRiskMitigationButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" ></Button>
+
                                 </Grid>
                         </TabItem>
-                        <TabItem Header="ThreatPrevention" x:DataType="viewModels:ThreatPreventionViewModel" Foreground="#526257" >
+                        <TabItem Header="ThreatPrevention" DataContext = "{Binding ThreatPreventionViewModel}" Foreground="#526257" >
                                 <Grid>
                                         <DataGrid x:Name="ThreatPreventionGrid"  Background="Black" AutoGenerateColumns="True" Foreground="DarkSeaGreen" ItemsSource="{Binding ThreatPreventions}"></DataGrid>
+                                        <TextBox x:Name="SearchThreatPreventionTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" ></TextBox>
+                                        <Button x:Name="EditThreatPreventionButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" ></Button>
+                                        <Button x:Name="DeleteThreatPreventionButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" ></Button>
+
+
                                 </Grid>
                         </TabItem>
                 </TabControl>

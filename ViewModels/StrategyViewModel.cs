@@ -26,10 +26,7 @@ public class StrategyViewModel : ViewModelBase
         using (var dbContext = new YourDbContext())
         {
             var strategies = dbContext.Strategy.ToList();
-            foreach (var strategy in strategies)
-            {
-                Strategies.Add(strategy);
-            }
+            Strategies = new(strategies);
         }
     }
 }

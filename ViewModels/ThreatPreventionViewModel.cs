@@ -25,10 +25,8 @@ public class ThreatPreventionViewModel : ViewModelBase
         using (var dbContext = new YourDbContext())
         {
             var threatPreventions = dbContext.ThreatPrevention.ToList();
-            foreach (var threatPrevention in threatPreventions)
-            {
-                ThreatPreventions.Add(threatPrevention);
-            }
+            ThreatPreventions = new(threatPreventions);
+
         }
     }
 }

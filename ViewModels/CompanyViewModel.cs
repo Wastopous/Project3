@@ -25,11 +25,8 @@ public class CompanyViewModel : ViewModelBase
     {
         using (var dbContext = new YourDbContext()) 
         {
-            var companies = dbContext.Company.ToList(); 
-            foreach (var company in companies)
-            {
-                Companies.Add(company); 
-            }
+            var companies = dbContext.Company.ToList();
+            Companies = new(companies);
         }
 
     }

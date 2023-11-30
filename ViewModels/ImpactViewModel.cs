@@ -27,10 +27,7 @@ public class ImpactViewModel : ViewModelBase
         using (var dbContext = new YourDbContext())
         {
             var impacts = dbContext.Impact.ToList();
-            foreach (var impact in impacts)
-            {
-                Impacts.Add(impact);
-            }
+            Impacts = new(impacts);
         }
     }
 }

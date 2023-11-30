@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Avalonia.Collections;
 using Microsoft.EntityFrameworkCore;
 using Project3.Models;
@@ -14,6 +15,51 @@ public class RiskViewModel : ViewModelBase
         get => _risks;
         set => SetField(ref _risks, value);
     }
+
+    private string _search = "";
+    public string Search
+    {
+        get => _search;
+        set
+        {
+            SetField(ref _search, value);
+            OnSearch();
+        }
+    }
+
+    private void OnSearch()
+    {
+        // using (var dbContext = new YourDbContext())
+        // {
+        //     var search = Search.ToLower();
+        //     var risks = dbContext.Risk
+        //         .Include(i => i.Impact)
+        //         .Include(c => c.Company)
+        //         .Include(s => s.Strategy)
+        //         .Include(rc => rc.RiskCategory)
+        //         .Include(rm => rm.RiskMitigation)
+        //         .Include(t => t.ThreatPrevention)
+        //         .Where(
+        //             it => string.ToLowerInvariant(it.RiskID.ToString()).Contains(search) ||
+        //                   it.RiskDescription.ToLower().Contains(search) ||
+        //                   it.Company.CompanyName.ToLower()
+        //                       .Contains(search) ||
+        //                   it.Impact.ImpactAmount.ToString()
+        //                       .Contains(search) ||
+        //                   it.Strategy.StrategyName.ToLower()
+        //                       .Contains(search) ||
+        //                   it.RiskMitigation.RiskMitigationName.ToString()
+        //                       .Contains(search) ||
+        //                   it.RiskCategory.RiskCategoryName.ToLower()
+        //                       .Contains(search) ||
+        //                   it.ThreatPrevention.ThreatPreventionName.ToLower()
+        //                       .Contains(search)
+        //         )
+        //         .ToList();
+        //     Risks = new AvaloniaList<Risk>(risks);
+        // }
+    }
+
 
     public RiskViewModel()
     {
@@ -32,11 +78,8 @@ public class RiskViewModel : ViewModelBase
                 .Include(rc => rc.RiskCategory)
                 .Include(rm => rm.RiskMitigation)
                 .Include(t=> t.ThreatPrevention)
-               .ToList(); 
-            foreach (var risk in risks)
-            {
-                Risks.Add(risk);
-            }
+               .ToList();
+            Risks = new AvaloniaList<Risk>(risks);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Project3.EditAddDelete;
 using Project3.Models;
 using Project3.ViewModels;
 
@@ -11,13 +12,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new RiskViewModel();
-        DataContext = new CompanyViewModel();
-        DataContext = new StrategyViewModel();
-        DataContext = new RiskCategoryViewModel();
-        DataContext = new ImpactViewModel();
-        DataContext = new RiskMitigationViewModel();
-        DataContext = new ThreatPreventionViewModel();
+        DataContext = new MainWindowViewModel();
     }
 
     private void CloseButton_OnClick(object? sender, RoutedEventArgs e)
@@ -43,7 +38,11 @@ public partial class MainWindow : Window
 
     private void EditStrategyButton_OnClick(object? sender, RoutedEventArgs e)
     {
-
+        EditOrAddStrategyWindow editOrAddStrategyWindow = new EditOrAddStrategyWindow()
+        {
+            id = (StrategyGrid.SelectedItem as Strategy).StrategyID
+        };
+        editOrAddStrategyWindow.Show();
     }
 
     private void DeleteRiskButton_OnClick(object? sender, RoutedEventArgs e)
@@ -58,8 +57,5 @@ public partial class MainWindow : Window
 
     }
 
-    private void SearchRiskTextBox_OnTextChanging(object? sender, TextChangingEventArgs e)
-    {
-        
-    }
+
 }

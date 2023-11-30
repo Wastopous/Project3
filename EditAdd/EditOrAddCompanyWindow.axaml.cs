@@ -13,13 +13,14 @@ public partial class EditOrAddCompanyWindow : Window
     {
         InitializeComponent();
     }
+    public int id { get; set; } = 0;
 
     private void SaveBtn_OnClick(object? sender, RoutedEventArgs e)
     {
         var db = new YourDbContext();
         var company = new Company()
         {
-            CompanyName = NewCompanyName.Text, CompanyDescription = NewCompanyDescription.Text
+            CompanyName = NewName.Text, CompanyDescription = NewDescription.Text
         };
         
         if (id == 0)
@@ -41,5 +42,5 @@ public partial class EditOrAddCompanyWindow : Window
         this.Close();
     }
 
-    public int id { get; set; } = 0;
+    
 }

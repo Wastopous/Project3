@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Avalonia.Collections;
 using Project3.Models;
+using SkiaSharp;
 
 namespace Project3.ViewModels;
 
@@ -25,10 +26,7 @@ public class RiskMitigationViewModel : ViewModelBase
         using (var dbContex = new YourDbContext())
         {
             var riskMitigations = dbContex.RiskMitigation.ToList();
-            foreach (var riskMitigation  in riskMitigations)
-            {
-                RiskMitigations.Add(riskMitigation);
-            }
+            RiskMitigations = new AvaloniaList<RiskMitigation>(riskMitigations);
         }
     }
 }
