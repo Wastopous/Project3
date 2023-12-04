@@ -47,7 +47,14 @@ public partial class MainWindow : Window
 
     private void DeleteRiskButton_OnClick(object? sender, RoutedEventArgs e)
     {
+        if (RiskGrid.SelectedItem is not Risk risk) return;
+        
+        using var db = new YourDbContext();
+        db.Risk.Remove(risk);
+        
+        if (DataContext is not MainWindowViewModel viewModel) return;
 
+        viewModel.RiskViewModel.Risks.Remove(risk);
     }
 
 
