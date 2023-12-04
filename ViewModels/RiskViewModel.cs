@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Avalonia.Collections;
 using Microsoft.EntityFrameworkCore;
@@ -29,35 +29,35 @@ public class RiskViewModel : ViewModelBase
 
     private void OnSearch()
     {
-        // using (var dbContext = new YourDbContext())
-        // {
-        //     var search = Search.ToLower();
-        //     var risks = dbContext.Risk
-        //         .Include(i => i.Impact)
-        //         .Include(c => c.Company)
-        //         .Include(s => s.Strategy)
-        //         .Include(rc => rc.RiskCategory)
-        //         .Include(rm => rm.RiskMitigation)
-        //         .Include(t => t.ThreatPrevention)
-        //         .Where(
-        //             it => string.ToLowerInvariant(it.RiskID.ToString()).Contains(search) ||
-        //                   it.RiskDescription.ToLower().Contains(search) ||
-        //                   it.Company.CompanyName.ToLower()
-        //                       .Contains(search) ||
-        //                   it.Impact.ImpactAmount.ToString()
-        //                       .Contains(search) ||
-        //                   it.Strategy.StrategyName.ToLower()
-        //                       .Contains(search) ||
-        //                   it.RiskMitigation.RiskMitigationName.ToString()
-        //                       .Contains(search) ||
-        //                   it.RiskCategory.RiskCategoryName.ToLower()
-        //                       .Contains(search) ||
-        //                   it.ThreatPrevention.ThreatPreventionName.ToLower()
-        //                       .Contains(search)
-        //         )
-        //         .ToList();
-        //     Risks = new AvaloniaList<Risk>(risks);
-        // }
+        using (var dbContext = new YourDbContext())
+        {
+            var search = Search.ToLower();
+            var risks = dbContext.Risk
+                .Include(i => i.Impact)
+                .Include(c => c.Company)
+                .Include(s => s.Strategy)
+                .Include(rc => rc.RiskCategory)
+                .Include(rm => rm.RiskMitigation)
+                .Include(t => t.ThreatPrevention)
+                .Where(
+                    it => it.RiskID.ToString().Contains(search) ||
+                          it.RiskDescription.ToLower().Contains(search) ||
+                          it.Company.CompanyName.ToLower()
+                              .Contains(search) ||
+                          it.Impact.ImpactAmount.ToString()
+                              .Contains(search) ||
+                          it.Strategy.StrategyName.ToLower()
+                              .Contains(search) ||
+                          it.RiskMitigation.RiskMitigationName.ToString()
+                              .Contains(search) ||
+                          it.RiskCategory.RiskCategoryName.ToLower()
+                              .Contains(search) ||
+                          it.ThreatPrevention.ThreatPreventionName.ToLower()
+                              .Contains(search)
+                )
+                .ToList();
+            Risks = new AvaloniaList<Risk>(risks);
+        }
     }
 
 
