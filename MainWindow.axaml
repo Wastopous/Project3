@@ -29,7 +29,7 @@
                                                                 <DataGridTextColumn Header="ThreatPrevention" Binding="{Binding ThreatPrevention.ThreatPreventionName}" />
                                                         </DataGrid.Columns>
                                         </DataGrid>
-                                                <TextBox x:Name="SearchRiskTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" Text="{Binding Search}" ></TextBox>
+                                                <TextBox x:Name="SearchRiskTextBox" Margin="-400 360 0 0" Width="490" Height="10" Watermark="Search" Foreground="LightGreen" FontSize="16"  Background="Black" Text="{Binding Search}" TextChanged="SearchRiskTextBox_OnTextChanged" ></TextBox>
                                                 <Button x:Name="EditRiskButton" Content="Edit/Add" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="490 360 0 0" Click="EditRiskButton_OnClickButton_OnClick"></Button>
                                                 <Button x:Name="DeleteRiskButton" Content="Delete" Background="#526257" Foreground="Black" Width="200" Height="32" HorizontalContentAlignment="Center" Margin="690 360 0 0" Click="DeleteRiskButton_OnClick"></Button>
                                 </Grid>

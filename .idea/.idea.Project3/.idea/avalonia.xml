@@ -5,6 +5,8 @@
       <map>
         <entry key="AddRiskWindow.axaml" value="Project3.csproj" />
         <entry key="App.axaml" value="Project3.csproj" />
+        <entry key="EditAdd/EditOrAddCompanyWindow.axaml" value="Project3.csproj" />
+        <entry key="EditAdd/EditOrAddStrategyWindow.axaml" value="Project3.csproj" />
         <entry key="EditAddDelete/EditOrAddCompanyWindow.axaml" value="Project3.csproj" />
         <entry key="EditAddDelete/EditOrAddStrategyWindow.axaml" value="Project3.csproj" />
         <entry key="EditCompanyWindow.axaml" value="Project3.csproj" />

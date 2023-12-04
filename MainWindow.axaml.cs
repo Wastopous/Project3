@@ -65,4 +65,8 @@ public partial class MainWindow : Window
     }
 
 
+    private void SearchRiskTextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+
+    }
 }
